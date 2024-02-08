@@ -178,10 +178,10 @@ select * from MedicineTable
 
 
 
--------------------------------ADMIN
+------------------------------- Sanchit Kothekar ADMIN Functionality ------------------------------------------------
 
 
-alter PROCEDURE GetMedicinesProcedure
+CREATE PROCEDURE GetMedicinesProcedure
 AS
 BEGIN
     
@@ -199,6 +199,9 @@ END
 
 
 
+
+
+
 CREATE PROCEDURE UpdateMedicine
     @MedicineId INT,
     @MedicineName VARCHAR(255) = NULL,
@@ -210,6 +213,20 @@ CREATE PROCEDURE UpdateMedicine
 	@MedicineQuantity INT = NULL
 AS
 BEGIN
+    -- Check for negative values for @Cost and @MedicineQuantity
+    IF (@Cost IS NOT NULL AND @Cost < 0)
+    BEGIN
+        PRINT 'Cost cannot be negative.';
+        RETURN;
+    END;
+
+    IF (@MedicineQuantity IS NOT NULL AND @MedicineQuantity < 0)
+    BEGIN
+        PRINT 'Medicine quantity cannot be negative.';
+        RETURN;
+    END;
+
+    -- Update MedicineTable
     UPDATE MedicineTable 
     SET 
         medicine_name = ISNULL(@MedicineName, medicine_name),
@@ -226,17 +243,17 @@ END
 
 
 
-
-
 --add new medicine procedure
-	CREATE PROCEDURE AddNewMedicine
+
+
+    CREATE PROCEDURE AddNewMedicine
     @MedicineName VARCHAR(255),
     @BrandName VARCHAR(255),
     @Origin VARCHAR(50),
     @Generation VARCHAR(50),
     @Cost DECIMAL(10, 2),
 	@MedicineQuantity INT,
-    @CategoryId INT
+    @CategoryId INT@
 AS
 BEGIN
     -- Your insert logic here for adding a new medicine
@@ -310,7 +327,7 @@ exec GetMedicineCategoryProcedure
 
 
 
-------------------------------------------------------- search 
+------------------------------------------------------- Sameep Mahajan search functionality ---------------------- 
 
 -- search functionalities procedrues
 Create PROCEDURE SearchProcMedicine
@@ -396,7 +413,7 @@ END;
 
 
 
---------------------------------------------------------------- Login Registration
+--------------------------------------------------------------- Rakshit Dalvi Login Registration ---------------------------
 
 -- Stored Procedure for Patient Registration
 create PROCEDURE RegisterPatientProc
@@ -434,18 +451,8 @@ BEGIN
     WHERE patient_email = @Username AND patient_password = @Password;
 END;
 
--------------------------ADMIN-----------------------
--- Stored Procedure for Admin Registration
-create PROCEDURE RegisterAdminProc
-    @name NVARCHAR(50),
-	@email Nvarchar(50),
-	@phone bigint,
-    @Password NVARCHAR(50)
-	
-AS
-BEGIN
-    INSERT INTO AdminTable (admin_name, admin_email, admin_phone, admin_password) VALUES (@name, @email,@phone,@Password);
-END;
+
+
 
 -- Stored Procedure for Admin Login
 CREATE PROCEDURE ValidateAdminProc
@@ -483,7 +490,7 @@ END;
 
 
 
------------------------------------------Rating
+---------------------------------------------------- Sakshi Khatri Rating------------------------------------------
 
 -- stored procedure for Ratings Table
 
@@ -526,10 +533,9 @@ BEGIN
   INNER JOIN PatientTable p ON r.patient_id = p.patient_id;
 END
 
-select * from PatientTable
--------------------------------------------------------
 
-alter PROCEDURE GetMedicinesProcedure
+
+CREATE PROCEDURE GetMedicinesProcedure
 AS
 BEGIN
     
@@ -714,7 +720,7 @@ END;
 
 
 
--------------------sana procedure
+------------------------------------------------------------- Sana Qureshi procedure for Patient Medicine Buy-----------------------
 
 CREATE PROCEDURE AddToCartProc
     @PatientId INT,
@@ -1062,7 +1068,7 @@ insert into AdminTable values('Sanchit Kothekar','admin@cybage.com',9988772211,'
 
 
 
-alter PROCEDURE forgPasswordProc
+CREATE PROCEDURE forgPasswordProc
     @forgEmail NVARCHAR(50),
     @Result INT OUTPUT
 AS
@@ -1070,7 +1076,7 @@ BEGIN
     SET @Result = (SELECT COUNT(*) FROM patientTable WHERE patient_email = @forgEmail);
 END;
 
-alter PROCEDURE changePasswordProc
+CREATE PROCEDURE changePasswordProc
     @forgEmail NVARCHAR(50),
 	@forgPassword NVARCHAR(50),
     @Result INT OUTPUT
@@ -1079,3 +1085,20 @@ BEGIN
 	Update PatientTable set patient_password=@forgPassword where patient_email=@forgEmail
     SET @Result = (SELECT COUNT(*) FROM patientTable WHERE patient_email = @forgEmail);
 END;
+
+
+
+
+----------------------select statemements-----------------------------------
+
+select * from PatientTable
+
+select * from AdminTable
+
+select * from MedicineCategoryTable
+
+select * from MedicineTable
+
+select * from MedicineCartTable
+
+select * from RatingTable
