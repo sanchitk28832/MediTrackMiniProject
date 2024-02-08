@@ -1,0 +1,42 @@
+E:\MediTrackApp\MediTrackBAL\bin\Debug\MediTrackBAL.dll
+E:\MediTrackApp\MediTrackBAL\bin\Debug\MediTrackBAL.pdb
+E:\MediTrackApp\MediTrackBAL\bin\Debug\MediTrackDAL.dll
+E:\MediTrackApp\MediTrackBAL\bin\Debug\Spectre.Console.dll
+E:\MediTrackApp\MediTrackBAL\bin\Debug\System.Buffers.dll
+E:\MediTrackApp\MediTrackBAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+E:\MediTrackApp\MediTrackBAL\bin\Debug\System.Memory.dll
+E:\MediTrackApp\MediTrackBAL\bin\Debug\System.Numerics.Vectors.dll
+E:\MediTrackApp\MediTrackBAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\MediTrackApp\MediTrackBAL\bin\Debug\MediTrackDAL.pdb
+E:\MediTrackApp\MediTrackBAL\bin\Debug\Spectre.Console.xml
+E:\MediTrackApp\MediTrackBAL\bin\Debug\System.Buffers.xml
+E:\MediTrackApp\MediTrackBAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+E:\MediTrackApp\MediTrackBAL\bin\Debug\System.Memory.xml
+E:\MediTrackApp\MediTrackBAL\bin\Debug\System.Numerics.Vectors.xml
+E:\MediTrackApp\MediTrackBAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\MediTrackApp\MediTrackBAL\obj\Debug\MediTrackBAL.csproj.AssemblyReference.cache
+E:\MediTrackApp\MediTrackBAL\obj\Debug\MediTrackBAL.csproj.CoreCompileInputs.cache
+E:\MediTrackApp\MediTrackBAL\obj\Debug\MediTrackBAL.csproj.CopyComplete
+E:\MediTrackApp\MediTrackBAL\obj\Debug\MediTrackBAL.dll
+E:\MediTrackApp\MediTrackBAL\obj\Debug\MediTrackBAL.pdb
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\MediTrackBAL.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\MediTrackBAL.pdb
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\MediTrackDAL.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\Spectre.Console.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\System.Buffers.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\System.Memory.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\System.Numerics.Vectors.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\MediTrackDAL.pdb
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\Spectre.Console.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\System.Buffers.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\System.Memory.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\System.Numerics.Vectors.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\obj\Debug\MediTrackBAL.csproj.AssemblyReference.cache
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\obj\Debug\MediTrackBAL.csproj.CoreCompileInputs.cache
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\obj\Debug\MediTrackBAL.csproj.CopyComplete
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\obj\Debug\MediTrackBAL.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackBAL\obj\Debug\MediTrackBAL.pdb

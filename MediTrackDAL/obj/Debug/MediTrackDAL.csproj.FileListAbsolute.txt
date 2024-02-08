@@ -1,0 +1,38 @@
+E:\MediTrackApp\MediTrackDAL\bin\Debug\MediTrackDAL.dll
+E:\MediTrackApp\MediTrackDAL\bin\Debug\MediTrackDAL.pdb
+E:\MediTrackApp\MediTrackDAL\bin\Debug\Spectre.Console.dll
+E:\MediTrackApp\MediTrackDAL\bin\Debug\System.Buffers.dll
+E:\MediTrackApp\MediTrackDAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+E:\MediTrackApp\MediTrackDAL\bin\Debug\System.Memory.dll
+E:\MediTrackApp\MediTrackDAL\bin\Debug\System.Numerics.Vectors.dll
+E:\MediTrackApp\MediTrackDAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\MediTrackApp\MediTrackDAL\bin\Debug\Spectre.Console.xml
+E:\MediTrackApp\MediTrackDAL\bin\Debug\System.Buffers.xml
+E:\MediTrackApp\MediTrackDAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+E:\MediTrackApp\MediTrackDAL\bin\Debug\System.Memory.xml
+E:\MediTrackApp\MediTrackDAL\bin\Debug\System.Numerics.Vectors.xml
+E:\MediTrackApp\MediTrackDAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\MediTrackApp\MediTrackDAL\obj\Debug\MediTrackDAL.csproj.AssemblyReference.cache
+E:\MediTrackApp\MediTrackDAL\obj\Debug\MediTrackDAL.csproj.CoreCompileInputs.cache
+E:\MediTrackApp\MediTrackDAL\obj\Debug\MediTrackDAL.csproj.CopyComplete
+E:\MediTrackApp\MediTrackDAL\obj\Debug\MediTrackDAL.dll
+E:\MediTrackApp\MediTrackDAL\obj\Debug\MediTrackDAL.pdb
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\MediTrackDAL.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\MediTrackDAL.pdb
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\Spectre.Console.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\System.Buffers.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\System.Memory.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\System.Numerics.Vectors.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\Spectre.Console.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\System.Buffers.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\System.Memory.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\System.Numerics.Vectors.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\obj\Debug\MediTrackDAL.csproj.AssemblyReference.cache
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\obj\Debug\MediTrackDAL.csproj.CoreCompileInputs.cache
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\obj\Debug\MediTrackDAL.csproj.CopyComplete
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\obj\Debug\MediTrackDAL.dll
+E:\Edit MedTractApp\MediTrackApp\MediTrackDAL\obj\Debug\MediTrackDAL.pdb
