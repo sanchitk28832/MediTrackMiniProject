@@ -1,6 +1,4 @@
---creating database
-
-create database MediTrackDatabase
+create database MediTracApplicationkDatabase
 
 --patient table
 CREATE TABLE PatientTable(
@@ -12,25 +10,6 @@ CREATE TABLE PatientTable(
     patient_age INT NOT NULL
 );
 
-drop table PatientTable
-
-select * from PatientTable
-delete from PatientTable;
-DBCC CHECKIDENT (PatientTable, RESEED, 1)
-truncate table PatientTable;
-
-INSERT INTO PatientTable (patient_name, patient_email, patient_phone, patient_password, patient_age)
-VALUES 
-('John Doe', 'john@gmail.com', 1234567890, 'Pass@123', 30),
-('Jane Smith', 'jane.smith@example.com', 9876543210, 'securepass', 25),
-('Bob Johnson', 'bob.johnson@example.com', 5551112233, 'bobpass', 45),
-('Alice White', 'alice.white@example.com', 4442221111, 'alicepass', 35),
-('Charlie Brown', 'charlie.brown@example.com', 9998887777, 'charliepass', 28),
-('Eva Davis', 'eva.davis@example.com', 7773331111, 'evapass', 40),
-('Michael Lee', 'michael.lee@example.com', 1112223333, 'mikepass', 32),
-('Olivia Miller', 'olivia.miller@example.com', 6665554444, 'oliviapass', 29),
-('David Taylor', 'david.taylor@example.com', 2224446666, 'davidpass', 38),
-('Sophie Hall', 'sophie.hall@example.com', 8889990000, 'sophiepass', 42);
 
 
 --admin table
@@ -62,6 +41,7 @@ CREATE TABLE MedicineTable (
     medicine_origin VARCHAR(50) NOT NULL,
     generation VARCHAR(50) NOT NULL,
     cost DECIMAL(10, 2) NOT NULL,
+	medicine_quantity INT NOT NULL,
     FOREIGN KEY (medicine_category_id) REFERENCES MedicineCategoryTable(medicine_category_id) ON DELETE CASCADE
 );
 
@@ -81,6 +61,7 @@ CREATE TABLE MedicineCartTable (
 drop table MedicineCartTable
 
 
+
 --ratings table
 
 CREATE TABLE RatingTable (
@@ -94,15 +75,29 @@ CREATE TABLE RatingTable (
     FOREIGN KEY (patient_id) REFERENCES PatientTable(patient_id) ON DELETE CASCADE
 );
 
-select * from RatingTable
 
-drop table RatingTable
+drop table  RatingTable
 
-select * from AdminTable
 
-select * from PatientTable
 
-select * from MedicineTable
+
+
+
+
+
+--Inserting Patient
+INSERT INTO PatientTable (patient_name, patient_email, patient_phone, patient_password, patient_age)
+VALUES 
+('John Doe', 'john@gmail.com', 1234567890, 'Pass@123', 30),
+('Jane Smith', 'jane.smith@example.com', 9876543210, 'securepass', 20),
+('Bob Johnson', 'bob.johnson@example.com', 5551112233, 'bobpass', 45),
+('Alice White', 'alice.white@example.com', 4442221111, 'alicepass', 35),
+('Charlie Brown', 'charlie.brown@example.com', 9998887777, 'charliepass', 28),
+('Eva Davis', 'eva.davis@example.com', 7773331111, 'evapass', 40),
+('Michael Lee', 'michael.lee@example.com', 1112223333, 'mikepass', 32),
+('Olivia Miller', 'olivia.miller@example.com', 6665554444, 'oliviapass', 29),
+('David Taylor', 'david.taylor@example.com', 2224446666, 'davidpass', 38),
+('Sophie Hall', 'sophie.hall@example.com', 8889990000, 'sophiepass', 42);
 
 
 -- Inserting data into MedicineCategoryTable
@@ -115,76 +110,82 @@ VALUES
 
 
 -- Inserting data into MedicineTable with age groups
-INSERT INTO MedicineTable (medicine_category_id, medicine_name, brand_name, medicine_origin, generation, cost)
+INSERT INTO MedicineTable (medicine_category_id, medicine_name, brand_name, medicine_origin, generation, cost, medicine_quantity)
 VALUES
 --medicine data
 -- Homeopathic Medicines
-(1, 'Arnica', 'Boiron', 'France', 'Adult', 1574.25),
-(1, 'Rhus Tox', 'Hyland''s', 'USA', 'Teenagers', 1162.50),
-(1, 'Calendula', 'Weleda', 'Switzerland', 'Kids', 956.25),
-(1, 'Silicea', 'Hahnemann', 'Germany', 'Elders', 674.25),
-(1, 'Belladonna', 'Boiron', 'France', 'Adult', 1424.25),
-(1, 'Chamomilla', 'Hyland''s', 'USA', 'Teenagers', 1068.75),
-(1, 'Calcarea Phos', 'WHP', 'USA', 'Kids', 806.25),
-(1, 'Lycopodium', 'Hapco', 'Germany', 'Elders', 749.25),
+(1, 'Arnica', 'Boiron', 'France', 'Adult', 1574.25,10),
+(1, 'Rhus Tox', 'Hyland''s', 'USA', 'Teenagers', 1162.50,10),
+(1, 'Calendula', 'Weleda', 'Switzerland', 'Kids', 956.25,10),
+(1, 'Silicea', 'Hahnemann', 'Germany', 'Elders', 674.25,10),
+(1, 'Belladonna', 'Boiron', 'France', 'Adult', 1424.25,10),
+(1, 'Chamomilla', 'Hyland''s', 'USA', 'Teenagers', 1068.75,10),
+(1, 'Calcarea Phos', 'WHP', 'USA', 'Kids', 806.25,10),
+(1, 'Lycopodium', 'Hapco', 'Germany', 'Elders', 749.25,10),
 
 -- Ayurvedic Medicines
-(2, 'Ashwagandha', 'Himalaya', 'India', 'Adult', 956.25),
-(2, 'Triphala', 'Dabur', 'India', 'Teenagers', 674.25),
-(2, 'Chyawanprash', 'Patanjali', 'India', 'Kids', 768.75),
-(2, 'Shilajit', 'Zandu', 'India', 'Elders', 1087.50),
-(2, 'Neem Capsules', 'Organic India', 'India', 'Adult', 1181.25),
-(2, 'Brahmi Ghrita', 'Sri Sri Tattva', 'India', 'Teenagers', 899.25),
-(2, 'Pippali Rasayana', 'Dhootapapeshwar', 'India', 'Kids', 993.75),
-(2, 'Mahanarayan Oil', 'Baidyanath', 'India', 'Elders', 1312.50),
+(2, 'Ashwagandha', 'Himalaya', 'India', 'Adult', 956.25,10),
+(2, 'Triphala', 'Dabur', 'India', 'Teenagers', 674.25,10),
+(2, 'Chyawanprash', 'Patanjali', 'India', 'Kids', 768.75,10),
+(2, 'Shilajit', 'Zandu', 'India', 'Elders', 1087.50,10),
+(2, 'Neem Capsules', 'Organic India', 'India', 'Adult', 1181.25,10),
+(2, 'Brahmi Ghrita', 'Sri Sri Tattva', 'India', 'Teenagers', 899.25,10),
+(2, 'Pippali Rasayana', 'Dhootapapeshwar', 'India', 'Kids', 993.75,10),
+(2, 'Mahanarayan Oil', 'Baidyanath', 'India', 'Elders', 1312.50,10),
 
 -- Allopathic Medicines
-(3, 'Aspirin', 'Bayer', 'Germany', 'Adult', 411.75),
-(3, 'Ibuprofen', 'Advil', 'USA', 'Teenagers', 543.75),
-(3, 'Children''s Tylenol', 'Johnson & Johnson', 'USA', 'Kids', 674.25),
-(3, 'Arthritis Relief', 'Aleve', 'USA', 'Elders', 937.50),
-(3, 'Paracetamol', 'Tylenol', 'USA', 'Adult', 374.25),
-(3, 'Omeprazole', 'Prilosec', 'USA', 'Teenagers', 693.75),
-(3, 'Children''s Motrin', 'Motrin', 'USA', 'Kids', 599.25),
-(3, 'Blood Pressure Control', 'Norvasc', 'USA', 'Elders', 1687.50)
+(3, 'Aspirin', 'Bayer', 'Germany', 'Adult', 411.75,10),
+(3, 'Ibuprofen', 'Advil', 'USA', 'Teenagers', 543.75,10),
+(3, 'Children''s Tylenol', 'Johnson & Johnson', 'USA', 'Kids', 674.25,10),
+(3, 'Arthritis Relief', 'Aleve', 'USA', 'Elders', 937.50,10),
+(3, 'Paracetamol', 'Tylenol', 'USA', 'Adult', 374.25,10),
+(3, 'Omeprazole', 'Prilosec', 'USA', 'Teenagers', 693.75,10),
+(3, 'Children''s Motrin', 'Motrin', 'USA', 'Kids', 599.25,10),
+(3, 'Blood Pressure Control', 'Norvasc', 'USA', 'Elders', 1687.50,10)
 
 
 
 
---select statements
+--genaralQueries
 
-SELECT * FROM MedicineTable
+drop table PatientTable
 
-SELECT * FROM MedicineCategoryTable
+select * from PatientTable
+
+delete from PatientTable;
+
+DBCC CHECKIDENT (PatientTable, RESEED, 1);
+
+truncate table PatientTable;
+
+drop table MedicineCartTable
+
+select * from AdminTable
+
+select * from PatientTable
+
+select * from RatingTable
+
+drop table RatingTable
+
+select * from AdminTable
+
+select * from PatientTable
+
+select * from MedicineTable
 
 
-SELECT M.medicine_name, C.medicine_category_name 
-FROM MedicineTable M 
-INNER JOIN 
-MedicineCategoryTable C 
-ON
-M.medicine_category_id = C.medicine_category_id
 
 
 
-
---Admin Stored Procedures
-
---For Medicine table
-
-CREATE PROCEDURE GetMedicines
-AS
-BEGIN
-    SELECT * FROM MedicineTable;
-END
+------------------------------- Sanchit Kothekar ADMIN Functionality ------------------------------------------------
 
 
-
-alter PROCEDURE GetMedicinesProcedure
+CREATE PROCEDURE GetMedicinesProcedure
 AS
 BEGIN
     
-SELECT medicine_id, medicine_name, medicine_category_name, brand_name, medicine_origin, generation,cost 
+SELECT medicine_id, medicine_name, medicine_category_name, brand_name, medicine_origin, generation,cost,medicine_quantity
 FROM MedicineTable M
 INNER JOIN 
 MedicineCategoryTable C 
@@ -194,6 +195,13 @@ M.medicine_category_id = C.medicine_category_id
 END
 
 
+
+
+
+
+
+
+
 CREATE PROCEDURE UpdateMedicine
     @MedicineId INT,
     @MedicineName VARCHAR(255) = NULL,
@@ -201,9 +209,24 @@ CREATE PROCEDURE UpdateMedicine
     @Origin VARCHAR(50) = NULL,
     @Generation VARCHAR(50) = NULL,
     @Cost DECIMAL(10, 2) = NULL,
-    @CategoryId INT = NULL
+    @CategoryId INT = NULL,
+	@MedicineQuantity INT = NULL
 AS
 BEGIN
+    -- Check for negative values for @Cost and @MedicineQuantity
+    IF (@Cost IS NOT NULL AND @Cost < 0)
+    BEGIN
+        PRINT 'Cost cannot be negative.';
+        RETURN;
+    END;
+
+    IF (@MedicineQuantity IS NOT NULL AND @MedicineQuantity < 0)
+    BEGIN
+        PRINT 'Medicine quantity cannot be negative.';
+        RETURN;
+    END;
+
+    -- Update MedicineTable
     UPDATE MedicineTable 
     SET 
         medicine_name = ISNULL(@MedicineName, medicine_name),
@@ -211,51 +234,33 @@ BEGIN
         medicine_origin = ISNULL(@Origin, medicine_origin),
         generation = ISNULL(@Generation, generation),
         cost = ISNULL(@Cost, cost),
+		medicine_quantity = ISNULL(@MedicineQuantity, medicine_quantity),
         medicine_category_id = ISNULL(@CategoryId, medicine_category_id)
     WHERE medicine_id = @MedicineId;
 END
 
 
 
-EXEC UpdateMedicine
-    @MedicineId = 12,
-    @MedicineName = 'DivyaDrishti',
-    @BrandName = 'Patanjali',
-    @Origin = 'India',
-    @Generation = 'Elders',
-    @Cost = 99.99,
-    @CategoryId = 3;
-
 
 
 --add new medicine procedure
-	CREATE PROCEDURE AddNewMedicine
+
+
+    CREATE PROCEDURE AddNewMedicine
     @MedicineName VARCHAR(255),
     @BrandName VARCHAR(255),
     @Origin VARCHAR(50),
     @Generation VARCHAR(50),
     @Cost DECIMAL(10, 2),
-    @CategoryId INT
+	@MedicineQuantity INT,
+    @CategoryId INT@
 AS
 BEGIN
     -- Your insert logic here for adding a new medicine
-    INSERT INTO MedicineTable (medicine_category_id, medicine_name, brand_name, medicine_origin, generation, cost)
-    VALUES (@CategoryId, @MedicineName, @BrandName, @Origin, @Generation, @Cost);
+    INSERT INTO MedicineTable (medicine_category_id, medicine_name, brand_name, medicine_origin, generation, cost,medicine_quantity)
+    VALUES (@CategoryId, @MedicineName, @BrandName, @Origin, @Generation, @Cost,@MedicineQuantity);
 END
 
-
-
---delete medicine
-CREATE PROCEDURE DeleteMedicineProcedure
-    @MedicineId INT
-AS
-BEGIN
- DELETE FROM MedicineTable WHERE medicine_id = @MedicineId;
-END
-
-exec DeleteMedicineProcedure @MedicineId = 19;
-
-drop proc DeleteMedicineProcedure
 
 
 
@@ -277,7 +282,8 @@ BEGIN
         ROLLBACK;
     END CATCH;
 END;
-EXEC DeleteMedicineProcedure @MedicineId = 2;
+
+
 
 
 
@@ -321,13 +327,14 @@ exec GetMedicineCategoryProcedure
 
 
 
+------------------------------------------------------- Sameep Mahajan search functionality ---------------------- 
 
 -- search functionalities procedrues
 Create PROCEDURE SearchProcMedicine
     @SearchTerm NVARCHAR(100)
 AS
 BEGIN
-    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost
+    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost,medicine_quantity
     FROM MedicineTable M
 	INNER JOIN MedicineCategoryTable C ON M.medicine_category_id = C.medicine_category_id
     WHERE medicine_name LIKE '%' + @SearchTerm + '%' OR 
@@ -343,7 +350,7 @@ CREATE PROCEDURE SearchByMedName
 	@SearchTerm NVARCHAR(100)
 AS
 BEGIN
-    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost
+    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost,medicine_quantity
     FROM MedicineTable M
 	INNER JOIN MedicineCategoryTable C ON M.medicine_category_id = C.medicine_category_id
     WHERE medicine_name LIKE '%' + @SearchTerm + '%';
@@ -356,7 +363,7 @@ CREATE PROCEDURE SearchByBrandName
 	@SearchTerm NVARCHAR(100)
 AS
 BEGIN
-    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost
+    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost,medicine_quantity
     FROM MedicineTable M
 	INNER JOIN MedicineCategoryTable C ON M.medicine_category_id = C.medicine_category_id
     WHERE brand_name LIKE '%' + @SearchTerm + '%';
@@ -369,7 +376,7 @@ CREATE PROCEDURE SearchByGeneration
 	@SearchTerm NVARCHAR(100)
 AS
 BEGIN
-    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost
+    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost,medicine_quantity
     FROM MedicineTable M
 	INNER JOIN MedicineCategoryTable C ON M.medicine_category_id = C.medicine_category_id
     WHERE generation LIKE '%' + @SearchTerm + '%';
@@ -381,7 +388,7 @@ CREATE PROCEDURE SearchByMedCategory
 	@SearchTerm NVARCHAR(100)
 AS
 BEGIN
-    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost
+    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost,medicine_quantity
     FROM MedicineTable M
 	INNER JOIN MedicineCategoryTable C ON M.medicine_category_id = C.medicine_category_id
     WHERE medicine_category_name LIKE '%' + @SearchTerm + '%';
@@ -393,7 +400,7 @@ CREATE PROCEDURE SearchByMedOrigin
 	@SearchTerm NVARCHAR(100)
 AS
 BEGIN
-    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost
+    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost,medicine_quantity
     FROM MedicineTable M
 	INNER JOIN MedicineCategoryTable C ON M.medicine_category_id = C.medicine_category_id
     WHERE medicine_origin LIKE '%' + @SearchTerm + '%';
@@ -406,8 +413,7 @@ END;
 
 
 
-
-
+--------------------------------------------------------------- Rakshit Dalvi Login Registration ---------------------------
 
 -- Stored Procedure for Patient Registration
 create PROCEDURE RegisterPatientProc
@@ -445,18 +451,8 @@ BEGIN
     WHERE patient_email = @Username AND patient_password = @Password;
 END;
 
--------------------------ADMIN-----------------------
--- Stored Procedure for Admin Registration
-create PROCEDURE RegisterAdminProc
-    @name NVARCHAR(50),
-	@email Nvarchar(50),
-	@phone bigint,
-    @Password NVARCHAR(50)
-	
-AS
-BEGIN
-    INSERT INTO AdminTable (admin_name, admin_email, admin_phone, admin_password) VALUES (@name, @email,@phone,@Password);
-END;
+
+
 
 -- Stored Procedure for Admin Login
 CREATE PROCEDURE ValidateAdminProc
@@ -482,14 +478,19 @@ END;
 
 
 
--------------------------------------------------------------------------------
-select * from PatientTable;
 
-select * from AdminTable;
 
-insert into AdminTable values('Sanchit Kothekar','admin@cybage.com',9988772211,'Admin@1234')
 
---------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------- Sakshi Khatri Rating------------------------------------------
 
 -- stored procedure for Ratings Table
 
@@ -513,12 +514,6 @@ END;
 
 
 
-CREATE PROCEDURE GetAllRatingProcedure
-AS
-BEGIN
-
-SELECT * FROM RatingTable R INNER JOIN PatientTable P ON R.patient_id = P.patient_id I
-
 
 
 
@@ -538,10 +533,9 @@ BEGIN
   INNER JOIN PatientTable p ON r.patient_id = p.patient_id;
 END
 
-select * from PatientTable
--------------------------------------------------------
 
-alter PROCEDURE GetMedicinesProcedure
+
+CREATE PROCEDURE GetMedicinesProcedure
 AS
 BEGIN
     
@@ -702,58 +696,60 @@ select * from AdminTable
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- FINAL SP For Patient CRUD OperationSANA 9
-
-		-- display medicines
-Create PROCEDURE DisplayMedicinesProc 
+CREATE PROCEDURE forgPasswordProc
+    @forgEmail NVARCHAR(50),
+    @Result INT OUTPUT
 AS
 BEGIN
-    SELECT medicine_id,medicine_name, brand_name,medicine_origin,generation,cost,medicine_category_name FROM MedicineTable MT
-    Left JOIN MedicineCategoryTable MCT ON MCT.medicine_category_id = MT.medicine_category_id
-   
+    SET @Result = (SELECT COUNT(*) FROM patientTable WHERE patient_email = @forgEmail);
+END;
+
+CREATE PROCEDURE changePasswordProc
+    @forgEmail NVARCHAR(50),
+	@forgPassword NVARCHAR(50),
+    @Result INT OUTPUT
+AS
+BEGIN
+	Update PatientTable set patient_password=@forgPassword where patient_email=@forgEmail
+    SET @Result = (SELECT COUNT(*) FROM patientTable WHERE patient_email = @forgEmail);
 END;
 
 
 
-		-- Patient can Add medicine  to cart 
-Create PROCEDURE AddToCartProc
+
+
+
+
+------------------------------------------------------------- Sana Qureshi procedure for Patient Medicine Buy-----------------------
+
+CREATE PROCEDURE AddToCartProc
     @PatientId INT,
     @MedicineId INT,
     @Quantity INT
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM MedicineCartTable WHERE medicine_id =  @MedicineId AND patient_id = @PatientId)
+    -- Check if quantity is negative
+    IF @Quantity < 0
+    BEGIN
+        RAISERROR('Quantity cannot be negative.', 16, 1);
+        RETURN;
+    END
+
+    -- Check if there is enough stock
+    IF @Quantity > (SELECT medicine_quantity FROM MedicineTable WHERE medicine_id = @MedicineId)
+    BEGIN
+        RAISERROR('Not enough stock.', 16, 1);
+        RETURN;
+    END
+
+    IF EXISTS (SELECT 1 FROM MedicineCartTable WHERE medicine_id = @MedicineId AND patient_id = @PatientId)
     BEGIN
         -- Product already exists in the cart, update the quantity and total_price
         UPDATE MedicineCartTable
         SET
             quantity = quantity + @Quantity,
             total_price = (quantity + @Quantity) * (SELECT cost FROM MedicineTable WHERE medicine_id = @MedicineId)
-        WHERE medicine_id =  @MedicineId AND patient_id = @PatientId;
+        WHERE medicine_id = @MedicineId AND patient_id = @PatientId;
     END
     ELSE
     BEGIN
@@ -770,7 +766,8 @@ END;
 
 
 
-        --Displaying the cart item in user login
+
+
 Create PROCEDURE GetCartItemsProc
     @PatientId INT
 AS
@@ -795,6 +792,11 @@ END
 
 
 
+
+
+
+
+
 			-- Removing the Cart Item 
 CREATE PROCEDURE RemoveFromCartProc
     @Patient_id INT,
@@ -812,51 +814,115 @@ END;
 
 
 
-		-- For Deleteing the medicine from the cart after the patient paid the bills
+
+
+
+--clear cart proc
 CREATE PROCEDURE ClearCartProc
     @Patient_id INT
 AS
 BEGIN
+    BEGIN TRANSACTION;
+
+    DECLARE @Medicine_id INT;
+    DECLARE @Quantity INT;
+
+    DECLARE cart_cursor CURSOR FOR
+    SELECT medicine_id, quantity
+    FROM MedicineCartTable
+    WHERE patient_id = @Patient_id;
+
+    OPEN cart_cursor;
+    FETCH NEXT FROM cart_cursor INTO @Medicine_id, @Quantity;
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        -- Update medicine_quantity in MedicineTable
+        UPDATE MedicineTable
+        SET medicine_quantity = medicine_quantity - @Quantity
+        WHERE medicine_id = @Medicine_id;
+
+        FETCH NEXT FROM cart_cursor INTO @Medicine_id, @Quantity;
+    END;
+
+    CLOSE cart_cursor;
+    DEALLOCATE cart_cursor;
+
+    -- Delete records from MedicineCartTable
     DELETE FROM MedicineCartTable
     WHERE patient_id = @Patient_id;
+
+    COMMIT TRANSACTION;
 END;
 
 
 
-
-
-			--Search Procedure
-Create PROCEDURE SearchProcMedicine
-    @SearchTerm NVARCHAR(100)
+create PROCEDURE ValidatePasswordSP
+    @Patient_Id int ,
+    @Password NVARCHAR(50),
+    @Result INT OUTPUT
 AS
 BEGIN
-    SELECT medicine_id, medicine_name, medicine_origin,brand_name,medicine_category_name,generation,cost
-    FROM MedicineTable M
-	INNER JOIN MedicineCategoryTable C ON M.medicine_category_id = C.medicine_category_id
-    WHERE medicine_name LIKE '%' + @SearchTerm + '%' OR 
-		  brand_name LIKE '%' + @SearchTerm + '%' OR 
-		  generation LIKE '%' + @SearchTerm + '%' OR 
-		  medicine_category_name LIKE '%' + @SearchTerm + '%' OR
-		  medicine_origin LIKE '%' + @SearchTerm + '%';
+    SET @Result = (SELECT COUNT(*) FROM PatientTable WHERE patient_id = @Patient_Id AND patient_password = @Password);
 END;
 
 
 
 
-			-- It is used if patient wants to add or substract the quantity of medicine he or she want to purchase 
-create  PROCEDURE UpdateCartQuantity
+    @PatientId INT,
+    @MedicineId INT,
+    @Quantity INT
+AS
+BEGIN
+    -- Check if quantity is negative
+    IF @Quantity < 0
+    BEGIN
+        RAISERROR('Quantity cannot be negative.', 16, 1);
+        RETURN;
+    END
+
+    -- Check if there is enough stock
+    IF @Quantity > (SELECT medicine_quantity FROM MedicineTable WHERE medicine_id = @MedicineId)
+    BEGIN
+        RAISERROR('Not enough stock.', 16, 1);
+        RETURN;
+    END
+
+    
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE UpdateCartQuantityByReducingQuantity
     @PatientId INT,
     @MedicineId INT,
     @UpdateQuantity INT
 AS
 BEGIN
-    DECLARE @CurrentQuantity INT, @Cost DECIMAL(10, 2);
+    DECLARE @CurrentQuantity INT, @Cost DECIMAL(10, 2), @AvailableQuantity INT;
 
     -- Fetch current quantity and cost per unit
     SELECT @CurrentQuantity = quantity, @Cost = cost
     FROM MedicineCartTable MCT
     INNER JOIN MedicineTable MT ON MCT.medicine_id = MT.medicine_id
     WHERE MCT.patient_id = @PatientId AND MCT.medicine_id = @MedicineId;
+
+    -- Check available quantity
+    SELECT @AvailableQuantity = quantity
+    FROM MedicineCartTable
+    WHERE medicine_id = @MedicineId;
+
+    -- If the user wants to subtract and the available quantity is less than the update quantity, don't allow subtraction
+    IF @UpdateQuantity < 0 AND @AvailableQuantity < ABS(@UpdateQuantity)
+    BEGIN
+        PRINT 'Invalid operation The Quantity to substract cannot be more than the actual available quantity.';
+        RETURN; -- Exit the procedure
+    END;
 
     -- Calculate new quantity and total_price based on user input
     DECLARE @NewQuantity INT, @NewTotalPrice DECIMAL(10, 2);
@@ -873,12 +939,110 @@ BEGIN
     PRINT 'Quantity updated successfully.';
 END;
 
+drop proc UpdateCartQuantity
+
+
+CREATE PROCEDURE UpdateCartQuantityByAddingQuantity
+    @PatientId INT,
+    @MedicineId INT,
+    @UpdateQuantity INT
+AS
+BEGIN
+    DECLARE @CurrentQuantity INT, 
+            @Cost DECIMAL(10, 2), 
+            @AvailableQuantity INT;
+
+    -- Fetch current quantity and cost per unit
+    SELECT @CurrentQuantity = quantity, @Cost = cost
+    FROM MedicineCartTable MCT
+    INNER JOIN MedicineTable MT ON MCT.medicine_id = MT.medicine_id
+    WHERE MCT.patient_id = @PatientId AND MCT.medicine_id = @MedicineId;
+
+    -- Check available quantity
+    SELECT @AvailableQuantity = medicine_quantity
+    FROM MedicineTable
+    WHERE medicine_id = @MedicineId;
+
+    -- Calculate new quantity
+    DECLARE @NewQuantity INT;
+    SET @NewQuantity = @CurrentQuantity + @UpdateQuantity;
+
+    -- If the new quantity is greater than available stock, return message
+    IF @NewQuantity > @AvailableQuantity
+    BEGIN
+        PRINT 'Not enough stock.';
+        RETURN; -- Exit the procedure
+    END;
+
+    -- Update MedicineCartTable with new quantity and total_price
+    UPDATE MedicineCartTable
+    SET
+        quantity = @NewQuantity,
+        total_price = @NewQuantity * @Cost
+    WHERE patient_id = @PatientId AND medicine_id = @MedicineId;
+
+    PRINT 'Quantity updated successfully.';
+END;
 
 
 
 
-		-- it will check that Is the givin medicine id is already located int table for repective Pateint ID 
-		--If yes it will return @Exist > 0 otherwise 0
+
+
+CREATE PROCEDURE UpdateReplaceCartQuantity
+    @PatientId INT,
+    @MedicineId INT,
+    @UpdateQuantity INT
+AS
+BEGIN
+    DECLARE @CurrentQuantity INT, @Cost DECIMAL(10, 2), @AvailableQuantity INT;
+
+    -- Fetch current quantity and cost per unit
+    SELECT @CurrentQuantity = quantity, @Cost = cost
+    FROM MedicineCartTable MCT
+    INNER JOIN MedicineTable MT ON MCT.medicine_id = MT.medicine_id
+    WHERE MCT.patient_id = @PatientId AND MCT.medicine_id = @MedicineId;
+
+    -- Check if @UpdateQuantity is negative
+    IF @UpdateQuantity < 0
+    BEGIN
+        PRINT 'Quantity cannot be negative.';
+        RETURN; -- Exit the procedure
+    END;
+
+    -- Check available quantity in MedicineTable
+    SELECT @AvailableQuantity = medicine_quantity
+    FROM MedicineTable
+    WHERE medicine_id = @MedicineId;
+
+    -- If the user wants to replace and the available quantity is less than the update quantity, don't allow replacement
+    IF @UpdateQuantity > @AvailableQuantity
+    BEGIN
+        PRINT 'Not enough stock.';
+        RETURN; -- Exit the procedure
+    END;
+
+    -- Update MedicineCartTable with new quantity and total_price
+    UPDATE MedicineCartTable
+    SET
+        quantity = @UpdateQuantity,
+        total_price = @UpdateQuantity * @Cost
+    WHERE patient_id = @PatientId AND medicine_id = @MedicineId;
+
+    PRINT 'Quantity updated successfully.';
+END;
+
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE CheckMedicineExistsForPatient
     @PatientId INT,
     @MedicineId INT,
@@ -896,34 +1060,11 @@ END;
 
 
 
+select * from PatientTable;
 
+select * from AdminTable;
 
--- Validate Password Stored Procedure
-
-create PROCEDURE ValidatePasswordSP
-    @Patient_Id int ,
-    @Password NVARCHAR(50),
-    @Result INT OUTPUT
-AS
-BEGIN
-    SET @Result = (SELECT COUNT(*) FROM PatientTable WHERE patient_id = @Patient_Id AND patient_password = @Password);
-END;
-
-select  * from PatientTable
-
-select * from MedicineCartTable
-
-select * from AdminTable
-
-select * from MedicineTable
-
-select * from RatingTable
-
-
-
-
-
-
+insert into AdminTable values('Sanchit Kothekar','admin@cybage.com',9988772211,'Admin@1234')
 
 
 
@@ -947,41 +1088,17 @@ END;
 
 
 
-select * from RatingTable
 
-
-
--- It is used if patient wants to replacing the quantity of medicine he or she want to purchase 
-
-
-
-create PROCEDURE UpdateReplaceCartQuantity
-    @PatientId INT,
-    @MedicineId INT,
-    @UpdateQuantity INT
-AS
-BEGIN
-    DECLARE @CurrentQuantity INT, @Cost DECIMAL(10, 2);
-
-    -- Fetch current quantity and cost per unit
-    SELECT @CurrentQuantity = quantity, @Cost = cost
-    FROM MedicineCartTable MCT
-    INNER JOIN MedicineTable MT ON MCT.medicine_id = MT.medicine_id
-    WHERE MCT.patient_id = @PatientId AND MCT.medicine_id = @MedicineId;
-
-    -- Calculate new quantity and total_price based on user input
-   
-
-
-    -- Update MedicineCartTable with new quantity and total_price
-    UPDATE MedicineCartTable
-    SET
-        quantity = @UpdateQuantity,
-        total_price = @UpdateQuantity * @Cost
-    WHERE patient_id = @PatientId AND medicine_id = @MedicineId;
-
-    PRINT 'Quantity updated successfully.';
-END;
-
+----------------------select statemements-----------------------------------
 
 select * from PatientTable
+
+select * from AdminTable
+
+select * from MedicineCategoryTable
+
+select * from MedicineTable
+
+select * from MedicineCartTable
+
+select * from RatingTable
